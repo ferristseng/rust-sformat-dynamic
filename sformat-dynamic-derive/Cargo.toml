@@ -1,0 +1,18 @@
+[package]
+name                  = "sformat-dynamic-derive"
+version               = "0.1.0"
+authors               = ["Ferris Tseng <ferristseng@fastmail.fm>"]
+edition               = "2021"
+description           = "Derive context for dynamic string interpolation"
+readme                = "../README.md"
+license               = "MIT OR Apache-2.0"
+keywords              = ["format", "string"]
+categories            = ["template-engine", "value-formatting"]
+
+[lib]
+proc-macro            = true
+
+[dependencies]
+proc-macro2           = "1"
+syn                   = { version = "1", features = ["full"] }
+quote                 = "1"

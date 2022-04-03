@@ -1,0 +1,27 @@
+[package]
+name                  = "sformat-dynamic"
+version               = "0.1.0"
+authors               = ["Ferris Tseng <ferristseng@fastmail.fm>"]
+edition               = "2021"
+description           = "Dynamic string interpolation"
+readme                = "../README.md"
+license               = "MIT OR Apache-2.0"
+keywords              = ["format", "string"]
+categories            = ["template-engine", "value-formatting"]
+
+[features]
+derive                = ["sformat-dynamic-derive"]
+
+[dependencies]
+nom                   = "7"
+thiserror             = "1"
+serde                 = { version = "1", optional = true }
+unicode-xid           = "0.2"
+
+[dependencies.sformat-dynamic-derive]
+path                  = "../sformat-dynamic-derive"
+optional              = true
+
+[[example]]
+name                  = "derive"
+required-features     = ["derive"]
