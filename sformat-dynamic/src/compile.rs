@@ -301,6 +301,24 @@ mod tests {
         ]
     }
 
+    compile_test! {
+        [test_compile_precision_number]
+        COMPILE "{test:.15}"
+        TO AST vec![
+            Token::Variable(
+                "test",
+                Some(
+                    Format::new(
+                        None,
+                        Flags::default(),
+                        None,
+                        Some(15)
+                    )
+                )
+            )
+        ]
+    }
+
     macro_rules! format_test {
         (
             [$test_name:ident]
@@ -615,6 +633,51 @@ mod tests {
             ("number", TypedValue::Str("1000"))
         ]);
         EQUALS format!("{:.<+021}", "1000");
+    }
+
+    format_test! {
+        [test_format_zero_float]
+        FORMAT "{float:.15}"
+        WITH CTXT HashMap::from([
+            ("float", TypedValue::Float64(0.0))
+        ]);
+        EQUALS format!("{:.15}", 0.0);
+    }
+
+    format_test! {
+        [test_format_non_zero_float]
+        FORMAT "{float:.15}"
+        WITH CTXT HashMap::from([
+            ("float", TypedValue::Float64(10.1562))
+        ]);
+        EQUALS format!("{:.15}", 10.1562);
+    }
+
+    format_test! {
+        [test_format_non_zero_usize]
+        FORMAT "{usize:.15}"
+        WITH CTXT HashMap::from([
+            ("usize", TypedValue::Uint(128))
+        ]);
+        EQUALS format!("{:.15}", 128);
+    }
+
+    format_test! {
+        [test_format_fill_smaller_than_precision]
+        FORMAT "{float:*<4.15}"
+        WITH CTXT HashMap::from([
+            ("float", TypedValue::Float64(1.123456))
+        ]);
+        EQUALS format!("{:*<4.15}", 1.123456);
+    }
+
+    format_test! {
+        [test_format_fill_larger_than_precision]
+        FORMAT "{float:*<20.11}"
+        WITH CTXT HashMap::from([
+            ("float", TypedValue::Float64(283.1239))
+        ]);
+        EQUALS format!("{:*<20.11}", 283.1239);
     }
 
     format_test! {
