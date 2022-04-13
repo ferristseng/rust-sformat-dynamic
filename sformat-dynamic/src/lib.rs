@@ -50,6 +50,45 @@
 //!
 //! assert_eq!(formatted, "Hello           Ferris!")
 //! ```
+//! ### Feature Parity
+//!
+//! Consult the [`str::fmt`](https://doc.rust-lang.org/std/fmt/) documentation for
+//! what these features actually mean.
+//!
+//! | Feature                             | Implemented | Future Plan to Implement |
+//! | ----------------------------------- | ----------- | ------------------------ |
+//! | Named Argument                      | ✅          | N/A                      |
+//! | Positional Argument                 | ❌          | ❌                       |
+//! | Fill / Alignment     ( < | ^ | > )  | ✅          | N/A                      |
+//! | Sign Flag            ( + )          | ✅          | N/A                      |
+//! | Alternate Form Flag  ( # )          | ❌          | 🤔                       |
+//! | Zero Flag            ( 0 )          | ✅          | N/A                      |
+//! | Precision - Fixed    ( .N )         | ✅          | N/A                      |
+//! | Precision - Arg      ( .N$ )        | ❌          | ❌                       |
+//! | Precision - Astrix   ( .* )         | ❌          | ❌                       |
+//!
+//! ### Derive Types
+//! 
+//! A table of types that can be derived using `sformat-dynamic-derive`.
+//!
+//! | Type                                | Implemented | Future Plan to Implement |
+//! | ----------------------------------- | ----------- | ------------------------ |
+//! | &T : Debug                          | ❌          | ✅                       |
+//! | &T : Display                        | ❌          | ✅                       |
+//! | &str                                | ✅          | ✅                       |
+//! | isize                               | ✅          | N/A                      |
+//! | i64                                 | ✅          | N/A                      |
+//! | i32                                 | ✅          | N/A                      |
+//! | i16                                 | ✅          | N/A                      |
+//! | i8                                  | ✅          | N/A                      |
+//! | usize                               | ✅          | N/A                      |
+//! | u64                                 | ✅          | N/A                      |
+//! | u32                                 | ✅          | N/A                      |
+//! | u16                                 | ✅          | N/A                      |
+//! | u8                                  | ✅          | N/A                      |
+//! | f64                                 | ✅          | N/A                      |
+//! | f32                                 | ✅          | N/A                      |
+//! | bool                                | ✅          | N/A                      |
 
 #![forbid(unsafe_code)]
 
