@@ -59,7 +59,7 @@
 //! | ----------------------------------- | ----------- | ------------------------ |
 //! | Named Argument       `{name}`       | ✅          | N/A                      |
 //! | Positional Argument  `{}`           | ❌          | ❌                       |
-//! | Fill / Alignment     `< | ^ | >`    | ✅          | N/A                      |
+//! | Fill / Alignment     `< , ^ , >`    | ✅          | N/A                      |
 //! | Sign Flag            `+`            | ✅          | N/A                      |
 //! | Alternate Form Flag  `#`            | ❌          | 🤔                       |
 //! | Zero Flag            `0`            | ✅          | N/A                      |
