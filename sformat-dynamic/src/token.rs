@@ -27,7 +27,7 @@ impl<'format> Token<'format> {
                 .write_all(lit.as_bytes())
                 .map_err(format::Error::WriteLiteralError),
             Token::Variable(name, None) => {
-                let val = context.get_variable(name)?.string_repr();
+                let val = context.get_variable(name)?.string_repr(None);
 
                 write
                     .write_all(val.as_ref().as_bytes())

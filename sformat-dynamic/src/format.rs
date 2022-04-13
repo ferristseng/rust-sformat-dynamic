@@ -128,7 +128,7 @@ impl Format {
     where
         W: Write,
     {
-        let write_str = val.string_repr();
+        let write_str = val.string_repr(self.precision);
         let mut write_str = write_str.as_ref();
         let sign = self
             .flags

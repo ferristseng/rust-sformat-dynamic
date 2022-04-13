@@ -65,21 +65,31 @@ pub enum TypedValue<'a> {
 }
 
 impl<'a> TypedValue<'a> {
-    pub(crate) fn string_repr(&self) -> StringRepresentation<'a> {
+    pub(crate) fn string_repr(&self, precision: Option<u32>) -> StringRepresentation<'a> {
+        macro_rules! handle_numeric_pattern {
+            ($e:expr) => (
+                if let Some(precision) = precision {
+                    StringRepresentation::Owned(format!("{1:.0$}", precision as usize, $e))
+                } else {
+                    StringRepresentation::Owned($e.to_string())
+                }
+            )
+        }
+
         match self {
             TypedValue::Str(inner) => StringRepresentation::Borrowed(inner),
-            TypedValue::Int(num) => StringRepresentation::Owned(num.to_string()),
-            TypedValue::Int64(num) => StringRepresentation::Owned(num.to_string()),
-            TypedValue::Int32(num) => StringRepresentation::Owned(num.to_string()),
-            TypedValue::Int16(num) => StringRepresentation::Owned(num.to_string()),
-            TypedValue::Int8(num) => StringRepresentation::Owned(num.to_string()),
-            TypedValue::Uint(num) => StringRepresentation::Owned(num.to_string()),
-            TypedValue::Uint64(num) => StringRepresentation::Owned(num.to_string()),
-            TypedValue::Uint32(num) => StringRepresentation::Owned(num.to_string()),
-            TypedValue::Uint16(num) => StringRepresentation::Owned(num.to_string()),
-            TypedValue::Uint8(num) => StringRepresentation::Owned(num.to_string()),
-            TypedValue::Float32(num) => StringRepresentation::Owned(num.to_string()),
-            TypedValue::Float64(num) => StringRepresentation::Owned(num.to_string()),
+            TypedValue::Int(num) => handle_numeric_pattern!(num),
+            TypedValue::Int64(num) => handle_numeric_pattern!(num),
+            TypedValue::Int32(num) => handle_numeric_pattern!(num),
+            TypedValue::Int16(num) => handle_numeric_pattern!(num),
+            TypedValue::Int8(num) => handle_numeric_pattern!(num),
+            TypedValue::Uint(num) => handle_numeric_pattern!(num),
+            TypedValue::Uint64(num) => handle_numeric_pattern!(num),
+            TypedValue::Uint32(num) => handle_numeric_pattern!(num),
+            TypedValue::Uint16(num) => handle_numeric_pattern!(num),
+            TypedValue::Uint8(num) => handle_numeric_pattern!(num),
+            TypedValue::Float32(num) => handle_numeric_pattern!(num),
+            TypedValue::Float64(num) => handle_numeric_pattern!(num),
             TypedValue::Bool(true) => StringRepresentation::Borrowed("true"),
             TypedValue::Bool(false) => StringRepresentation::Borrowed("false"),
             TypedValue::Dyn(DynPointer::Debug(debug)) => {
