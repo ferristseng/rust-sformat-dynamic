@@ -57,15 +57,15 @@
 //!
 //! | Feature                             | Implemented | Future Plan to Implement |
 //! | ----------------------------------- | ----------- | ------------------------ |
-//! | Named Argument                      | ✅          | N/A                      |
-//! | Positional Argument                 | ❌          | ❌                       |
-//! | Fill / Alignment     ( < | ^ | > )  | ✅          | N/A                      |
-//! | Sign Flag            ( + )          | ✅          | N/A                      |
-//! | Alternate Form Flag  ( # )          | ❌          | 🤔                       |
-//! | Zero Flag            ( 0 )          | ✅          | N/A                      |
-//! | Precision - Fixed    ( .N )         | ✅          | N/A                      |
-//! | Precision - Arg      ( .N$ )        | ❌          | ❌                       |
-//! | Precision - Astrix   ( .* )         | ❌          | ❌                       |
+//! | Named Argument       `{name}`       | ✅          | N/A                      |
+//! | Positional Argument  `{}`           | ❌          | ❌                       |
+//! | Fill / Alignment     `< | ^ | >`    | ✅          | N/A                      |
+//! | Sign Flag            `+`            | ✅          | N/A                      |
+//! | Alternate Form Flag  `#`            | ❌          | 🤔                       |
+//! | Zero Flag            `0`            | ✅          | N/A                      |
+//! | Precision - Fixed    `.N`           | ✅          | N/A                      |
+//! | Precision - Arg      `.N$`          | ❌          | ❌                       |
+//! | Precision - Astrix   `.*`           | ❌          | ❌                       |
 //!
 //! ### Derive Types
 //! 
